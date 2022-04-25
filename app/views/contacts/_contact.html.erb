@@ -1,13 +1,15 @@
 <div id="<%= dom_id contact %>" class="contact-details">
-  <div>
-  <%= contact.name %>
-  <br/>
-  <%= contact.email %>
+  <%= image_tag(contact.image,class: "image") if contact.image.present?  %>
+  <div class="sub-details">
+    <br/>
+    <%= contact.name %>
+    <br/>
+    <%= contact.email %>
   </div>
   <div>
-  <%= link_to("Edit",edit_contact_path(contact)) %>
+    <%= link_to("Edit",edit_contact_path(contact)) %>
   </div>
   <div>
-  <%= button_to("Delete",contact_path(contact), method: :delete) %>
+    <%= button_to("Delete",contact_path(contact), method: :delete) %>
   </div>
 </div>
