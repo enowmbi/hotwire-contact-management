@@ -7,7 +7,7 @@
     <%= contact.email %>
   </div>
   <div>
-    <%= link_to("Edit",edit_contact_path(contact)) %>
+    <%= button_to("Edit",edit_contact_path(contact), method: :post) %>
   </div>
   <div>
     <%= button_to("Delete",contact_path(contact), method: :delete) %>

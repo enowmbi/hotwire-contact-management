@@ -17,6 +17,13 @@ class ContactsController < ApplicationController
 
   # GET /contacts/1/edit
   def edit
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream:[
+          turbo_stream.update(@contact, partial: "contacts/form", locals: { contact: @contact})
+        ]
+      end
+    end
   end
 
   # POST /contacts or /contacts.json
@@ -49,6 +56,11 @@ class ContactsController < ApplicationController
   def update
     respond_to do |format|
       if @contact.update(contact_params)
+        format.turbo_stream do
+          render turbo_stream: [
+             turbo_stream.update(@contact, partial: "contacts/contact",locals: { contact: @contact} )
+          ]
+        end
         format.html { redirect_to contact_url(@contact), notice: "Contact was successfully updated." }
         format.json { render :show, status: :ok, location: @contact }
       else
