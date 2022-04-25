@@ -36,10 +36,11 @@ class ContactsController < ApplicationController
           render turbo_stream: [
              turbo_stream.update("new-form", partial: "contacts/form", locals: { contact: Contact.new }),
              turbo_stream.prepend("contacts", partial: "contacts/contact", locals: { contact: @contact }),
-             turbo_stream.update("number_of_contacts", html: Contact.all.size)
+             turbo_stream.update("number_of_contacts", html: Contact.all.size),
+             turbo_stream.update("notice", html: Constants::CREATE_CONTACT_SUCCESS_MESSAGE)
           ]
         end
-        format.html { redirect_to contact_url(@contact), notice: "Contact was successfully created." }
+        format.html { redirect_to contact_url(@contact), notice: Constants::CREATE_CONTACT_SUCCESS_MESSAGE }
         format.json { render :show, status: :created, location: @contact }
       else
         format.turbo_stream do
@@ -59,10 +60,11 @@ class ContactsController < ApplicationController
       if @contact.update(contact_params)
         format.turbo_stream do
           render turbo_stream: [
-             turbo_stream.update(@contact, partial: "contacts/contact",locals: { contact: @contact} )
+             turbo_stream.update(@contact, partial: "contacts/contact",locals: { contact: @contact} ),
+             turbo_stream.update("notice", html: Constants::UPDATE_CONTACT_SUCCESS_MESSAGE)
           ]
         end
-        format.html { redirect_to contact_url(@contact), notice: "Contact was successfully updated." }
+        format.html { redirect_to contact_url(@contact), notice: Constants::UPDATE_CONTACT_SUCCESS_MESSAGE }
         format.json { render :show, status: :ok, location: @contact }
       else
         format.turbo_stream do
@@ -84,10 +86,11 @@ class ContactsController < ApplicationController
       format.turbo_stream do
         render turbo_stream: [
           turbo_stream.remove(@contact),
-          turbo_stream.update("number_of_contacts", html: Contact.all.size)
+          turbo_stream.update("number_of_contacts", html: Contact.all.size),
+          turbo_stream.update("notice", html: Constants::DESTROY_CONTACT_SUCCESS_MESSAGE)
         ]
       end
-      format.html { redirect_to contacts_url, notice: "Contact was successfully destroyed." }
+      format.html { redirect_to contacts_url, notice: Constants::DESTROY_CONTACT_SUCCESS_MESSAGE }
       format.json { head :no_content }
     end
   end
