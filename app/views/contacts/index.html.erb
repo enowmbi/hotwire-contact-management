@@ -1,14 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<main>
+  <p style="color: green"><%= notice %></p>
 
-<h1>Contacts</h1>
+  <h1>Contact Manager</h1>
+  <div>
+    <%= render "contacts/form", contact: Contact.new %>
 
-<div id="contacts">
-  <% @contacts.each do |contact| %>
-    <%= render contact %>
-    <p>
-      <%= link_to "Show this contact", contact %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New contact", new_contact_path %>
+  </div>
+  <h2>Contacts(<span><%= pluralize(@contacts.size,"person") %></span>)</h2>
+      <hr/>
+  <div id="contacts">
+    <% @contacts.each do |contact| %>
+      <%= render contact %>
+      <hr/>
+    <% end %>
+  </div>
+</main>

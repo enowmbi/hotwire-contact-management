@@ -1,22 +1,13 @@
-<div id="<%= dom_id contact %>">
-  <p>
-    <strong>Name:</strong>
-    <%= contact.name %>
-  </p>
-
-  <p>
-    <strong>Address:</strong>
-    <%= contact.address %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= contact.email %>
-  </p>
-
-  <p>
-    <strong>Phone:</strong>
-    <%= contact.phone %>
-  </p>
-
+<div id="<%= dom_id contact %>" class="contact-details">
+  <div>
+  <%= contact.name %>
+  <br/>
+  <%= contact.email %>
+  </div>
+  <div>
+  <%= link_to("Edit",edit_contact_path(contact)) %>
+  </div>
+  <div>
+  <%= button_to("Delete",contact_path(contact), method: :delete) %>
+  </div>
 </div>
