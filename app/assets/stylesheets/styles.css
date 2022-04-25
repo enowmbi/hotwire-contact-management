@@ -1,7 +1,7 @@
 main{
   font-size: 20px;
-  margin-left: 350px;
-  margin-right: 350px;
+  margin-left: 250px;
+  margin-right: 250px;
 }
 
 main h1, h2{
@@ -20,4 +20,16 @@ main input{
    justify-content: space-between;
    align-items: center;
 }
+
+.new-contact-form{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left{
+   width: 40%;
+   margin-right: 5px;
+}
+
 

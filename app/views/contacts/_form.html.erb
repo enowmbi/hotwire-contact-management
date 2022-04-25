@@ -11,15 +11,22 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.text_field :name, placeholder: "Enter name here!", required: true %>
-  </div>
+  <div class="new-contact-form">
+    <div class="left">
+      <div>
+        <%= form.text_field :name, placeholder: "Enter name here!", required: true %>
+      </div>
 
-  <div>
-    <%= form.email_field :email, placeholder: "Enter valid email here!", required: true %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+      <div>
+        <%= form.email_field :email, placeholder: "Enter valid email here!", required: true %>
+      </div>
+    </div>
+    <div class="center">
+      <%= image_tag id: contact_image  %>
+      <%= form.file_field :image, onchange: "alert('hello image field changed')" %>
+      </div>
+    <div class="right">
+      <%= form.submit %>
+    </div>
   </div>
 <% end %>
