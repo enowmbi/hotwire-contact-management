@@ -64,6 +64,11 @@ class ContactsController < ApplicationController
         format.html { redirect_to contact_url(@contact), notice: "Contact was successfully updated." }
         format.json { render :show, status: :ok, location: @contact }
       else
+        format.turbo_stream do
+          render turbo_stream: [
+             turbo_stream.update(@contact, partial: "contacts/contact",locals: { contact: @contact} )
+          ]
+        end
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
@@ -75,6 +80,11 @@ class ContactsController < ApplicationController
     @contact.destroy
 
     respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.remove(@contact)
+        ]
+      end
       format.html { redirect_to contacts_url, notice: "Contact was successfully destroyed." }
       format.json { head :no_content }
     end
