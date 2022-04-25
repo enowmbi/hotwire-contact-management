@@ -35,7 +35,8 @@ class ContactsController < ApplicationController
         format.turbo_stream do
           render turbo_stream: [
              turbo_stream.update("new-form", partial: "contacts/form", locals: { contact: Contact.new }),
-             turbo_stream.prepend("contacts", partial: "contacts/contact", locals: { contact: @contact })
+             turbo_stream.prepend("contacts", partial: "contacts/contact", locals: { contact: @contact }),
+             turbo_stream.update("number_of_contacts", html: Contact.all.size)
           ]
         end
         format.html { redirect_to contact_url(@contact), notice: "Contact was successfully created." }
@@ -82,7 +83,8 @@ class ContactsController < ApplicationController
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
-          turbo_stream.remove(@contact)
+          turbo_stream.remove(@contact),
+          turbo_stream.update("number_of_contacts", html: Contact.all.size)
         ]
       end
       format.html { redirect_to contacts_url, notice: "Contact was successfully destroyed." }
