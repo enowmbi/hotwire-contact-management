@@ -5,20 +5,20 @@ main{
 }
 
 main h1, h2{
-   text-align: center;
+  text-align: center;
 }
 
 main input{
- width: 100%;
- margin-bottom: 10px;
- padding: 10px;
- font-size: 15px;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 15px;
 }
 
 .contact-details{
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .new-contact-form{
@@ -28,11 +28,11 @@ main input{
 }
 
 .left{
-   width: 40%;
-   margin-right: 5px;
+  width: 40%;
+  margin-right: 5px;
 }
 
 img{
-   width: 7%;
+  width: 7%;
 }
 

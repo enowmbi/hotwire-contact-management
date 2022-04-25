@@ -2,16 +2,14 @@
   <p style="color: green"><%= notice %></p>
 
   <h1>Contact Manager</h1>
-  <div>
+  <div id="new-form">
     <%= render "contacts/form", contact: Contact.new %>
-
   </div>
   <h2>Contacts(<span><%= pluralize(@contacts.size,"person") %></span>)</h2>
       <hr/>
   <div id="contacts">
     <% @contacts.each do |contact| %>
       <%= render contact %>
-      <hr/>
     <% end %>
   </div>
 </main>

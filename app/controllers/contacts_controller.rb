@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
 
   # GET /contacts or /contacts.json
   def index
-    @contacts = Contact.all
+    @contacts = Contact.order(created_at: :desc)
   end
 
   # GET /contacts/1 or /contacts/1.json
@@ -25,9 +25,20 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
+        format.turbo_stream do
+          render turbo_stream: [
+             turbo_stream.update("new-form", partial: "contacts/form", locals: { contact: Contact.new }),
+             turbo_stream.prepend("contacts", partial: "contacts/contact", locals: { contact: @contact })
+          ]
+        end
         format.html { redirect_to contact_url(@contact), notice: "Contact was successfully created." }
         format.json { render :show, status: :created, location: @contact }
       else
+        format.turbo_stream do
+          render turbo_stream: [
+             turbo_stream.update("create-contact-form", partial: "contacts/form", locals: { contact: @contact })
+          ]
+        end
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
