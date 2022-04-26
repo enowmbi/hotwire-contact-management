@@ -95,6 +95,18 @@ class ContactsController < ApplicationController
     end
   end
 
+  def search
+    @results = Contact.where("name ILIKE ?", "%#{params[:search_params]}%")
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.update("contacts", partial: "contacts/search_results", locals: { results: @results }),
+          turbo_stream.update("number_of_contacts", html: @results.size)
+        ]
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contact

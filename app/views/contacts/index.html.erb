@@ -6,7 +6,10 @@
     <%= render "contacts/form", contact: Contact.new %>
   </div>
   <h2>Contacts(<span id="number_of_contacts"><%= @contacts.size %></span>)</h2>
-      <hr/>
+  <div>
+    <%= render "contacts/search_form" %>
+  </div>
+  <hr/>
   <div id="contacts">
     <% @contacts.each do |contact| %>
       <%= render contact %>
