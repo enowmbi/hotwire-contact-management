@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class="new-contact-form">
+  <div class="new-contact-form" data-controller="contacts">
     <div class="left">
       <div>
         <%= form.text_field :name, placeholder: "Enter name here!", required: true %>
@@ -22,11 +22,12 @@
       </div>
     </div>
     <div class="center">
-      <img id="contact_image" />
-      <%= form.file_field :image, onchange: "alert('hello image field changed')" %>
-      </div>
+      <%= image_tag(preview_image(contact), id: "img_preview", data: { target: "contacts.output" }) %>
+      <%= form.file_field :image, :class => "form-control-file photo_upload", data: {target: "contacts.input", action: "contacts#readURL" } %>
+    </div>    
     <div class="right">
       <%= form.submit %>
     </div>
   </div>
+  <hr/>
 <% end %>

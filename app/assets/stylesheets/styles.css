@@ -21,6 +21,16 @@ main input{
   align-items: center;
 }
 
+.image{
+  flex-basis: 7%;
+}
+.sub-details{
+  flex-basis: 60%;
+}
+.edit-button, .delete-button{
+  flex-basis: 10%;
+}
+
 .new-contact-form{
   display: flex;
   justify-content: space-between;
@@ -28,13 +38,28 @@ main input{
 }
 
 .left{
-  width: 40%;
+  flex: 1;
   margin-right: 5px;
 }
 
-img{
+.center{
+  flex-basis: 25%;
+  margin-left: 50px;
+}
+
+.right{
+  flex-basis: 15%;
+}
+
+.contact-details img{
   width: 7%;
 }
+
+#img_preview{
+  width: 85px;
+  margin-bottom: 0;
+}
+
 
 #notice{
  color: green;
