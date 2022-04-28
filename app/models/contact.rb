@@ -1,5 +1,9 @@
 class Contact < ApplicationRecord
-  has_one_attached :image
+  has_one_attached :image do |attached_image|
+    attached_image.variant :thumb, resize_to_limit: [100, 100]
+    attached_image.variant :medium, resize_to_limit: [300, 300]
+  end
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
   validates :name, presence: true, length: { within: (10..40) }, uniqueness: true

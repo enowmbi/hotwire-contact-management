@@ -1,7 +1,7 @@
 <% results.each do |contact| %>
   <div id="<%= dom_id contact %>" >
     <div class="contact-details">
-      <%= image_tag(preview_image(contact), class: "image") %>
+      <%= image_tag(preview_image(contact, :thumb), class: "image") %>
       <div class="sub-details">
         <br/>
         <%= highlight(contact.name, params[:search_params]) %>

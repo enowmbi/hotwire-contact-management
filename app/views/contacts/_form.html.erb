@@ -22,8 +22,8 @@
       </div>
     </div>
     <div class="center">
-      <%= image_tag(preview_image(contact), id: "img_preview", data: { target: "image.output" }) %>
-      <%= form.file_field :image, :class => "form-control-file photo_upload", data: {target: "image.input", action: "image#readURL" } %>
+      <%= image_tag(preview_image(contact, :medium), id: "img_preview", data: { target: "image.output" }) %>
+      <%= form.file_field :image, class: "form-control-file photo_upload", data: {target: "image.input", action: "image#readURL" } %>
     </div>    
     <div class="right">
       <%= form.submit %>
