@@ -1,7 +1,12 @@
+body {
+  font-size: 1.125rem;
+  color: #707070;
+}
+
 main{
-  font-size: 20px;
-  margin-left: 250px;
-  margin-right: 250px;
+  width: 98%;
+  max-width: 980px;
+  margin: 0 auto;
 }
 
 main h1, h2{
@@ -63,5 +68,29 @@ main input{
 
 #notice{
  color: green;
+}
+
+@media(max-width: 675px){
+  .new-contact-form{
+    flex-direction: column;
+  }
+  .left, .center, .right{
+     flex-basis: 100%;
+     margin: 0 auto;
+  }
+  .center{
+    text-align: center;
+  }
+  .form-control-file{
+    text-align-last: center;
+  }
+  .contact-details{
+   flex-direction: column;
+  }
+  .image,.sub-details, .edit-button, .delete-button{
+   flex-basis: 100%;
+   margin: 0 auto;
+   text-align: center;
+  }
 }
 
