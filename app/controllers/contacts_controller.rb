@@ -45,7 +45,8 @@ class ContactsController < ApplicationController
       else
         format.turbo_stream do
           render turbo_stream: [
-             turbo_stream.update("create-contact-form", partial: "contacts/form", locals: { contact: @contact })
+            turbo_stream.update("create-contact-form", partial: "contacts/form", locals: { contact: @contact }),
+            turbo_stream.update("alert", html: @contact.errors.full_messages)
           ]
         end
         format.html { render :new, status: :unprocessable_entity }
@@ -60,7 +61,7 @@ class ContactsController < ApplicationController
       if @contact.update(contact_params)
         format.turbo_stream do
           render turbo_stream: [
-             turbo_stream.update(@contact, partial: "contacts/contact",locals: { contact: @contact} ),
+             turbo_stream.update(@contact, partial: "contacts/contact", locals: { contact: @contact }),
              turbo_stream.update("notice", html: Constants::UPDATE_CONTACT_SUCCESS_MESSAGE)
           ]
         end
@@ -69,7 +70,8 @@ class ContactsController < ApplicationController
       else
         format.turbo_stream do
           render turbo_stream: [
-             turbo_stream.update(@contact, partial: "contacts/contact",locals: { contact: @contact} )
+             turbo_stream.update(@contact, partial: "contacts/contact", locals: { contact: @contact }),
+             turbo_stream.update("alert", html: @contact.errors.full_messages)
           ]
         end
         format.html { render :edit, status: :unprocessable_entity }
