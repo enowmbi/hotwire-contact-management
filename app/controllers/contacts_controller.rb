@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
 
   # GET /contacts or /contacts.json
   def index
-    @contacts = Contact.order(created_at: :desc)
+    @contacts = current_user.contacts.order(created_at: :desc)
   end
 
   # GET /contacts/1 or /contacts/1.json
@@ -29,7 +29,7 @@ class ContactsController < ApplicationController
 
   # POST /contacts or /contacts.json
   def create
-    @contact = Contact.new(contact_params)
+    @contact = current_user.contacts.build(contact_params)
 
     respond_to do |format|
       if @contact.save
@@ -37,7 +37,7 @@ class ContactsController < ApplicationController
           render turbo_stream: [
             turbo_stream.update("new-form", partial: "contacts/form", locals: { contact: Contact.new }),
             turbo_stream.prepend("contacts", partial: "contacts/contact", locals: { contact: @contact }),
-            turbo_stream.update("number_of_contacts", html: Contact.all.size),
+            turbo_stream.update("number_of_contacts", html: current_user.contacts.size),
             turbo_stream.update("notice", html: Constants::CREATE_CONTACT_SUCCESS_MESSAGE)
           ]
         end
@@ -89,7 +89,7 @@ class ContactsController < ApplicationController
       format.turbo_stream do
         render turbo_stream: [
           turbo_stream.remove(@contact),
-          turbo_stream.update("number_of_contacts", html: Contact.all.size),
+          turbo_stream.update("number_of_contacts", html: current_user.contacts.size),
           turbo_stream.update("notice", html: Constants::DESTROY_CONTACT_SUCCESS_MESSAGE)
         ]
       end
@@ -99,7 +99,7 @@ class ContactsController < ApplicationController
   end
 
   def search
-    @results = Contact.where("name ILIKE ?", "%#{params[:search_params]}%")
+    @results = current_user.contacts.where("name ILIKE ?", "%#{params[:search_params]}%").order(created_at: :desc)
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
@@ -114,7 +114,7 @@ class ContactsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_contact
-    @contact = Contact.find(params[:id])
+    @contact = current_user.contacts.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

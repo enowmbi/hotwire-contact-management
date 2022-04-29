@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Contact < ApplicationRecord
+  belongs_to :user
+
   has_one_attached :image do |attached_image|
     attached_image.variant :thumb, resize_to_limit: [100, 100]
     attached_image.variant :medium, resize_to_limit: [300, 300]
