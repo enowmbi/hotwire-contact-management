@@ -48,6 +48,9 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 
+# Use rubocop-rails for enforcing coding standards in Ruby/Rails
+gem "rubocop-rails", require: false
+
 #Use pagy for pagination
 gem "pagy"
 
