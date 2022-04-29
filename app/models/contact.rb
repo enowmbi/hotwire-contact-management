@@ -10,8 +10,8 @@ class Contact < ApplicationRecord
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
-  validates :name, presence: true, length: { within: (10..40) }, uniqueness: true
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
+  validates :name, presence: true, length: { within: (10..40) }, uniqueness: { scope: :user_id }
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { scope: :user_id }
 
   validate :acceptable_image
 
