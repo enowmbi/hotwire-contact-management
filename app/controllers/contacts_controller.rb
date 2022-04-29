@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ContactsController < ApplicationController
-  before_action :set_contact, only: %i[ show edit update destroy ]
+  before_action :set_contact, only: %i[show edit update destroy]
 
   # GET /contacts or /contacts.json
   def index
@@ -7,8 +9,7 @@ class ContactsController < ApplicationController
   end
 
   # GET /contacts/1 or /contacts/1.json
-  def show
-  end
+  def show; end
 
   # GET /contacts/new
   def new
@@ -19,8 +20,8 @@ class ContactsController < ApplicationController
   def edit
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream:[
-          turbo_stream.update(@contact, partial: "contacts/form", locals: { contact: @contact})
+        render turbo_stream: [
+          turbo_stream.update(@contact, partial: "contacts/form", locals: { contact: @contact })
         ]
       end
     end
@@ -34,10 +35,10 @@ class ContactsController < ApplicationController
       if @contact.save
         format.turbo_stream do
           render turbo_stream: [
-             turbo_stream.update("new-form", partial: "contacts/form", locals: { contact: Contact.new }),
-             turbo_stream.prepend("contacts", partial: "contacts/contact", locals: { contact: @contact }),
-             turbo_stream.update("number_of_contacts", html: Contact.all.size),
-             turbo_stream.update("notice", html: Constants::CREATE_CONTACT_SUCCESS_MESSAGE)
+            turbo_stream.update("new-form", partial: "contacts/form", locals: { contact: Contact.new }),
+            turbo_stream.prepend("contacts", partial: "contacts/contact", locals: { contact: @contact }),
+            turbo_stream.update("number_of_contacts", html: Contact.all.size),
+            turbo_stream.update("notice", html: Constants::CREATE_CONTACT_SUCCESS_MESSAGE)
           ]
         end
         format.html { redirect_to contact_url(@contact), notice: Constants::CREATE_CONTACT_SUCCESS_MESSAGE }
@@ -61,8 +62,8 @@ class ContactsController < ApplicationController
       if @contact.update(contact_params)
         format.turbo_stream do
           render turbo_stream: [
-             turbo_stream.update(@contact, partial: "contacts/contact", locals: { contact: @contact }),
-             turbo_stream.update("notice", html: Constants::UPDATE_CONTACT_SUCCESS_MESSAGE)
+            turbo_stream.update(@contact, partial: "contacts/contact", locals: { contact: @contact }),
+            turbo_stream.update("notice", html: Constants::UPDATE_CONTACT_SUCCESS_MESSAGE)
           ]
         end
         format.html { redirect_to contact_url(@contact), notice: Constants::UPDATE_CONTACT_SUCCESS_MESSAGE }
@@ -70,8 +71,8 @@ class ContactsController < ApplicationController
       else
         format.turbo_stream do
           render turbo_stream: [
-             turbo_stream.update(@contact, partial: "contacts/contact", locals: { contact: @contact }),
-             turbo_stream.update("alert", html: @contact.errors.full_messages)
+            turbo_stream.update(@contact, partial: "contacts/contact", locals: { contact: @contact }),
+            turbo_stream.update("alert", html: @contact.errors.full_messages)
           ]
         end
         format.html { render :edit, status: :unprocessable_entity }
@@ -110,13 +111,14 @@ class ContactsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_contact
-      @contact = Contact.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def contact_params
-      params.require(:contact).permit(:name, :email, :image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_contact
+    @contact = Contact.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def contact_params
+    params.require(:contact).permit(:name, :email, :image)
+  end
 end
