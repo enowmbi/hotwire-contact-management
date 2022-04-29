@@ -51,6 +51,9 @@ gem "image_processing", "~> 1.2"
 # Use rubocop-rails for enforcing coding standards in Ruby/Rails
 gem "rubocop-rails", require: false
 
+# Add devise for user authentication
+gem 'devise'
+
 #Use pagy for pagination
 gem "pagy"
 

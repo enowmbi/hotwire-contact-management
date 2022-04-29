@@ -11,6 +11,13 @@
   </head>
 
   <body>
+    <header>
+      <%= render "shared/header" %>
+    </header>
+    <%= render "shared/flash_message" %>
     <%= yield %>
+    <footer>
+      <%= render "shared/footer" %>
+    </footer>
   </body>
 </html>

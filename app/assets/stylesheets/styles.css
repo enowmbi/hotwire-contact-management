@@ -1,105 +1,171 @@
 body {
-  font-size: 1.125rem;
-  color: #707070;
+    font-size: 1.125rem;
+    color: #707070;
 }
 
 main{
-  width: 98%;
-  max-width: 980px;
-  margin: 0 auto;
+    width: 98%;
+    max-width: 980px;
+    margin: 0 auto;
 }
 
 main h1, h2{
-  text-align: center;
+    text-align: center;
 }
 
 main input{
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
-  font-size: 15px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 15px;
 }
 
 .contact-details{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .image{
-  flex-basis: 7%;
+    flex-basis: 7%;
 }
 .sub-details{
-  flex-basis: 60%;
+    flex-basis: 60%;
 }
 .edit-button, .delete-button{
-  flex-basis: 10%;
+    flex-basis: 10%;
 }
 
 .new-contact-form{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .left{
-  flex: 1;
-  margin-right: 5px;
+    flex: 1;
+    margin-right: 5px;
 }
 
 .center{
-  flex-basis: 25%;
-  margin-left: 50px;
+    flex-basis: 25%;
+    margin-left: 50px;
 }
 
 .right{
-  flex-basis: 15%;
+    flex-basis: 15%;
 }
 
 .contact-details img{
-  width: 7%;
+    width: 7%;
 }
 
 #img_preview{
-  width: 85px;
-  margin-bottom: 0;
+    width: 85px;
+    margin-bottom: 0;
 }
 
 
 #notice{
-  color: green;
+    color: green;
 }
 
 #alert{
-  color: red;
+    color: red;
 }
+
 .flash-message{
-  font-weight: bold;
-  padding: 10px;
-  text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+header {
+    background: #f5ecec;
+    display: flex;
+    justify-content: space-around;
+}
+
+.subtitle {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #1792d2;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul {
+    flex: 1;
+    text-align: center;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style-type: none;
+    padding-right: 5px 5px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-weight: 700;
+    color: #707070;
+    margin-right: .50rem;
+}
+
+nav ul li a:hover {
+    font-weight: bolder;
+    color: #1792d2;
+}
+
+.current-page {
+    border-bottom: 1px solid #707070;
+}
+
+.current-page:hover {
+    color: #707070;
+}
+
+footer{
+    text-align: center;
+}
+
+footer p{
+    background: #333;
+    color: #fff;
+    padding: 20px;
 }
 
 @media(max-width: 675px){
-  .new-contact-form{
-    flex-direction: column;
-  }
-  .left, .center, .right{
-    flex-basis: 100%;
-    margin: 0 auto;
-  }
-  .center{
-    text-align: center;
-  }
-  .form-control-file{
-    text-align-last: center;
-  }
-  .contact-details{
-    flex-direction: column;
-  }
-  .image,.sub-details, .edit-button, .delete-button{
-    flex-basis: 100%;
-    margin: 0 auto;
-    text-align: center;
-  }
+    .new-contact-form{
+        flex-direction: column;
+    }
+    .left, .center, .right{
+        flex-basis: 100%;
+        margin: 0 auto;
+    }
+    .center{
+        text-align: center;
+    }
+    .form-control-file{
+        text-align-last: center;
+    }
+    .contact-details{
+        flex-direction: column;
+    }
+    .image,.sub-details, .edit-button, .delete-button{
+        flex-basis: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
 }
 

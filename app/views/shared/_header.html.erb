@@ -1,0 +1,19 @@
+<div class="left-nav">
+  <h1>Contact Manager</h1>
+  <div class="subtitle">
+    Manage your contacts with ease
+  </div>
+</div>
+<nav>
+  <ul>
+    <%# <li><a href="home.html" class="current-page">Home</a></li> %>
+    <% if user_signed_in? %>
+      <li><%= "welcome #{current_user.email}" %></li>
+      |
+      <li><%= button_to("Sign out", destroy_session_path(current_user), method: :delete) %></li>
+    <% else %>
+      <li><%= link_to("Sign in", new_session_path(@user)) %></li>
+      <li><%= link_to("Sign up", new_user_registration_path) %></li>
+    <% end %>
+  </ul>
+</nav>
