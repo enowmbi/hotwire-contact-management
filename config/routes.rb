@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :tags
   devise_for :users
   root "contacts#index"
   resources :contacts do
