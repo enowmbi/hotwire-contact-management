@@ -54,6 +54,10 @@ gem "rubocop-rails", require: false
 # Add devise for user authentication
 gem 'devise'
 
+# Add omniauth and omniauth-google-oauth2 for authentication using google 
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+
 #Use pagy for pagination
 gem "pagy"
 
