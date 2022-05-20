@@ -75,6 +75,22 @@ main input{
     color: red;
 }
 
+#error_explanation{
+   color: red;
+}
+
+#error_explanation ul li{
+    /* list-style-type: number; */
+    /* padding-right: 5px 5px; */
+
+}
+
+.new-form{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
 .flash-message{
     font-weight: bold;
     padding: 10px;
@@ -147,18 +163,20 @@ footer p{
 }
 
 #new_user{ 
-    text-align: center;
+    /* text-align: center; */
+    /* margin-left: 200px; */
+    /* padding: 20px 300px; */
     margin-bottom: 20px;
 }
 
 .new_user_input{
-  width: 40%;
-  margin-bottom: 20px;
-  height: 30px;
+  width: 100%;
+  /* margin-bottom: 20px; */
+  /* height: 30px; */
 }
 
 #new_user input[type="checkbox"]{
-   margin-bottom: 20px;
+   /* margin-bottom: 20px; */
 }
 
 #links{
