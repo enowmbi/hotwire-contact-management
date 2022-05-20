@@ -70,6 +70,13 @@ group :development, :test do
   # Linter tools: Use rubocop-rails for enforcing coding standards in Ruby/Rails
   gem "rubocop-rails", require: false
   gem "rubocop"
+
+  # Use rspec-rails and factory_bot_rails for testing and generating factories
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem "shoulda-matchers"
+  # Use simplecov for code to test coverage
+  gem "simplecov", require: false
 end
 
 group :development do
