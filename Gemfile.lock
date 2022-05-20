@@ -73,7 +73,11 @@ GEM
     bindex (0.8.1)
     bootsnap (1.11.1)
       msgpack (~> 1.2)
+    brakeman (5.2.3)
     builder (3.2.4)
+    bundler-audit (0.9.1)
+      bundler (>= 1.2.0, < 3)
+      thor (~> 1.0)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     debug (1.4.0)
@@ -235,6 +239,8 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
+    ruby_audit (2.1.0)
+      bundler-audit (~> 0.9.0)
     sprockets (4.0.3)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -270,6 +276,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  brakeman
   debug
   devise
   image_processing (~> 1.2)
@@ -283,7 +290,9 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.2, >= 7.0.2.3)
   redis (~> 4.0)
+  rubocop
   rubocop-rails
+  ruby_audit
   sprockets-rails
   stimulus-rails
   turbo-rails
