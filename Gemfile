@@ -54,6 +54,10 @@ gem "rubocop-rails", require: false
 # Add devise for user authentication
 gem 'devise'
 
+# Add omniauth and omniauth-google-oauth2 for authentication using google 
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+
 #Use pagy for pagination
 gem "pagy"
 
@@ -71,5 +75,8 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # Use letter opener to open mails
+  gem 'letter_opener'
 end
 
