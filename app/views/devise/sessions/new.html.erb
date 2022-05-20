@@ -1,6 +1,6 @@
 <h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="new-form">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "new_user_input", placeholder: "Enter email here" %>
@@ -22,5 +22,6 @@
     <%= f.submit "Log in", class: "new_user_input" %>
   </div>
 <% end %>
+</div>
 
 <%= render "devise/shared/links" %>
