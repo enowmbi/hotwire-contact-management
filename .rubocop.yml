@@ -2,6 +2,7 @@ inherit_from: .rubocop_todo.yml
 
 require: rubocop-rails
 AllCops:
+  SuggestExtensions: false
   Exclude:
     - 'db/**/*'  
     - 'config/**/*'
@@ -9,8 +10,8 @@ AllCops:
     - 'config.ru'
     - 'Gemfile'
     - 'Rakefile'
-  SuggestExtensions: false
-      
+    - 'vendor/bundle/**/*'
+
 Style/StringLiterals:
   Enabled: false
 
