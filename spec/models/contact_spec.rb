@@ -12,8 +12,8 @@ RSpec.describe Contact, type: :model do
   end
   describe "validation" do
     it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to validate_uniqueness_of(:name).ignoring_case_sensitivity }
     it { is_expected.to validate_presence_of(:email) }
-    it { is_expected.to validate_uniqueness_of(:email).ignoring_case_sensitivity }
+    it { is_expected.to validate_uniqueness_of(:name).scoped_to(:user_id) }
+    it { is_expected.to validate_uniqueness_of(:email).scoped_to(:user_id) }
   end
 end
