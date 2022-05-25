@@ -52,9 +52,13 @@ gem "image_processing", "~> 1.2"
 # Add devise for user authentication
 gem 'devise'
 
-# Add omniauth and omniauth-google-oauth2 for authentication using google 
-gem 'omniauth'
-gem 'omniauth-google-oauth2'
+# Add omniauth-github 
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+
+# Add csrf-protection 
+gem "omniauth-rails_csrf_protection"
+
+
 
 #Use pagy for pagination
 gem "pagy"
