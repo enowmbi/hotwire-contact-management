@@ -21,11 +21,10 @@ class User < ApplicationRecord
       # user.first_name = name.first # assuming the user model has a name
       # user.last_name = name.last # assuming the user model has a name
 
-      #user.image = auth.info.image # assuming the user model has an image
+      # user.image = auth.info.image # assuming the user model has an image
       # If you are using confirmable and the provider(s) you use validate emails,
       # uncomment the line below to skip the confirmation emails.
       user.skip_confirmation!
     end
   end
-
 end
